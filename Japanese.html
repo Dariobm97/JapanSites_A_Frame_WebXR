@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japanese Sacred Grounds</title>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
+    <script src="../../dist/aframe-cursor-teleport-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-blink-controls/dist/aframe-blink-controls.min.js"></script>
+  
+</head>
+<body>
+    <a-scene cursor="rayOrigin: mouse" raycaster="objects: .clickable" renderer="colorManagement: true;">
+
+        <a-assets>
+            
+            <!-- Skybox -->
+            <img id="sky" src="Assets/img/autumn_hockey_4k.jpeg">
+            
+            <!-- Models -->
+            <a-asset-item id="sushi" src="Assets/models/sushi__ramen_booth/ramentry.gltf"></a-asset-item>
+            <a-asset-item id="cat" src="Assets/models/cat_murdered_soul_suspect/scene.gltf"></a-asset-item>
+            <a-asset-item id="lantern" src="Assets/models/toro__dai_doro_-_japanese_lantern/scene.gltf"></a-asset-item>
+            <a-asset-item id="tori" src="Assets/models/torii_-_japanese_gate/scene.gltf"></a-asset-item>
+            <a-asset-item id="templo" src="Assets/models/japanese_shinto_shrine/scene.gltf"></a-asset-item>
+            <a-asset-item id="castle" src="Assets/models/japanese_castle/scene.gltf"></a-asset-item>
+            <a-asset-item id="kimonocat" src="Assets/models/lowpoly_kimono_cat/scene.gltf"></a-asset-item>
+            <a-asset-item id="npcat" src="Assets/models/lowpoly_cat_npc/scene.gltf"></a-asset-item>
+            <a-asset-item id="well" src="Assets/models/stylized_japanese_well/scene.gltf"></a-asset-item>
+
+            <!-- Textures-->
+            <img id="texture" src="Assets/img/Gravel_001_SD-20231122T092849Z-001/Gravel_001_SD/Gravel_001_BaseColor.jpg">
+            <img id="texture2" src="Assets/img/Gravel_001_SD-20231122T092849Z-001/Gravel_001_SD/Gravel_001_Normal.jpg">
+            <img id="texture3" src="Assets/img/Stylized_Crystal_002_SD-20231201T194710Z-001/Stylized_Crystal_002_SD/Stylized_Crystal_002_basecolor.jpg">
+            <img id="texture4" src="Assets/img/Stylized_Crystal_002_SD-20231201T194710Z-001/Stylized_Crystal_002_SD/Stylized_Crystal_002_normal.jpg">
+            
+            <!-- Sound-->
+            <audio id="backgroundsound" src="Assets/Music/Yue Po - Herons.mp3"></audio>
+            
+        </a-assets>
+        
+        <!-- Skybox -->
+        <a-sky src="#sky"></a-sky>
+        
+        <!-- Models -->
+        <a-entity gltf-model = "#sushi" scale = "0.4 0.4 0.4" position = "11 -0.65 5" animation-mixer></a-entity>
+        <a-entity gltf-model = "#cat" scale =" 0.015 0.015 0.015" position="9.3 0.9 5.8" rotation="0 120 0" animation-mixer></a-entity>
+        <a-entity gltf-model = "#npcat" rotation="0 220 0" position = "13 0 4"></a-entity>
+        <a-entity gltf-model = "#tori" scale = "40 40 40" position = "0 0 -8" rotation="0 180 0"></a-entity>
+        <a-entity gltf-model = "#lantern" scale = "20 20 20" position = "-5 0 0"></a-entity>
+        <a-entity gltf-model = "#lantern" scale = "20 20 20" position = "5 0 0"></a-entity>
+        <a-entity gltf-model = "#templo" scale ="20 20 20" position = "-0.1 0 -12"></a-entity>
+        <a-entity class="collision" gltf-model = "#castle" scale="0.006 0.006 0.006" position="0 1.2 10" rotation="0 90 0"></a-entity>
+        <a-entity gltf-model ="#kimonocat" position="0 0 -7" scale="200 200 200" ></a-entity>
+        <a-entity gltf-model ="#well" position="-6 0 -5" scale="0.015 0.015 0.015" rotation="0 45 0"></a-entity>
+
+        <!-- Terrains -->
+        <a-plane class="collision" scale="10 10 10" rotation="-90 0 0"  src="#texture" normal-map="#texture2"></a-plane>
+        <a-plane class="collision" scale="10 10 10" rotation="-90 0 0" position="0 0 -10"  src="#texture" normal-map="#texture2" ></a-plane>
+        <a-plane class="collision" scale="10 10 10" rotation="-90 0 0" position="0 0 10"  src="#texture"normal-map="#texture2" ></a-plane>
+        <a-plane class="collision" scale="10 10 10" rotation="-90 0 0" position="-10 0 0"  src="#texture"normal-map="#texture2"></a-plane>
+        <a-plane class="collision" scale="10 10 10" rotation="-90 0 0" position="10 0 0"  src="#texture"normal-map="#texture2"></a-plane>
+        <a-plane class="collision" scale="10 10 10" rotation="-90 0 0" position="10 0 10"  src="#texture"normal-map="#texture2"></a-plane>
+        <a-plane class="collision" scale="10 10 10" rotation="-90 0 0" position="-10 0 -10"  src="#texture"normal-map="#texture2"></a-plane>
+        <a-plane class="collision" scale="10 10 10" rotation="-90 0 0" position="10 0 -10"  src="#texture"normal-map="#texture2"></a-plane>
+        <a-plane class="collision" scale="10 10 10" rotation="-90 0 0" position="-10 0 10"  src="#texture"normal-map="#texture2"></a-plane>
+
+        <!--Sound-->
+        <a-sound src="#backgroundsound" autoplay="true"loop="true" volume="0.4"></a-sound>
+
+        <!-- Link -->
+        <a-sphere class="clickable" id="backIndex" position="0 2 -7" scale="0.2 0.2 0.2" src="#texture3"normal-map="#texture4" 
+        animation = "property: rotation; to: 0 360 0; dur: 2000; loop: true;"></a-sphere>
+
+        <!-- player -->
+        <a-entity id="cameraRig" position="0 0 -3" cursor-teleport="cameraRig: #cameraRig; cameraHead: #head; collisionEntities: .collision; ignoreEntities: .clickable">
+            <a-entity id="head" position="0 1.52 0" camera look-controls="reverseMouseDrag: true">
+            </a-entity>
+            <a-entity
+            laser-controls="hand: left"
+            raycaster="objects: .clickable; far: 100"
+            line="color: red; opacity: 0.75"
+            blink-controls="
+                collisionEntities: .collision;
+                cameraRig: #cameraRig;
+                teleportOrigin: #head;
+                curveShootingSpeed: 6">
+            </a-entity>
+            <a-entity
+            laser-controls="hand: right"
+            raycaster="objects: .clickable"
+            line="color: red; opacity: 0.75"
+            blink-controls="
+                collisionEntities: .collision;
+                cameraRig: #cameraRig;
+                teleportOrigin: #head;
+                curveShootingSpeed: 6">
+            </a-entity>
+        </a-entity>
+        
+    </a-scene>
+    <script>
+        document.querySelector("#backIndex").addEventListener('click',function(){
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+</html>
